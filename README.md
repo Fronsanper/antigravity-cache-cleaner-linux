@@ -80,10 +80,9 @@ sudo apt install python3 python3-tk
 
 ### Community
 
-- Discord: NivalityOfficial — https://discord.com/invite/z5gb4zvWsY
-- Telegram: NivalityOfficial — https://t.me/+Ygtl-pe64d5jN2Nh
-- YouTube: FronsanperDev — https://www.youtube.com/@FronsanperOfficial
-- GitHub: Fronsanper — https://github.com/Fronsanper
+- Discord: [NivalityOfficial](https://discord.com/invite/z5gb4zvWsY)
+- Telegram: [NivalityOfficial](https://t.me/+Ygtl-pe64d5jN2Nh)
+- YouTube: [FronsanperDev](https://www.youtube.com/@FronsanperOfficial)
 
 **By Fronsanper**
 
@@ -199,10 +198,9 @@ O instalador não possui coleta de telemetria, não envia dados para servidores 
 
 ### Créditos / Links
 
-- Discord — NivalityOfficial: https://discord.com/invite/z5gb4zvWsY
-- Telegram — NivalityOfficial: https://t.me/+Ygtl-pe64d5jN2Nh
-- YouTube — FronsanperDev: https://www.youtube.com/@FronsanperOfficial
-- GitHub — Fronsanper: https://github.com/Fronsanper
+- Discord: [NivalityOfficial](https://discord.com/invite/z5gb4zvWsY)
+- Telegram: [NivalityOfficial](https://t.me/+Ygtl-pe64d5jN2Nh)
+- YouTube: [FronsanperDev](https://www.youtube.com/@FronsanperOfficial)
 
 ---
 
