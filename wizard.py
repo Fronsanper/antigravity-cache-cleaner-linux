@@ -55,10 +55,10 @@ STR = {
 }
 
 LINKS = {
-    "Discord": "https://discord.com/invite/z5gb4zvWsY",
-    "Telegram": "https://t.me/+Ygtl-pe64d5jN2Nh",
-    "YouTube": "https://www.youtube.com/@FronsanperOfficial",
-    "GitHub": "https://github.com/Fronsanper",
+    "Discord": {"text": "NivalityOfficial", "url": "https://discord.com/invite/z5gb4zvWsY"},
+    "Telegram": {"text": "NivalityOfficial", "url": "https://t.me/+Ygtl-pe64d5jN2Nh"},
+    "YouTube": {"text": "FronsanperDev", "url": "https://www.youtube.com/@FronsanperOfficial"},
+    "GitHub": {"text": "Fronsanper", "url": "https://github.com/Fronsanper"},
 }
 
 
