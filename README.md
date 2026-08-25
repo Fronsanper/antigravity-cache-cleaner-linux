@@ -17,7 +17,6 @@ This project turns the Antigravity cache-clearing script into a distributable Li
 - creation/update of `/usr/share/applications/antigravity.desktop` when administrative access is available;
 - a restore action that puts the original desktop file back from the backup;
 - an uninstall flow that restores the original file before removing the project;
-- clickable Fronsanper community links;
 - bilingual installer and cleaner messages;
 - version `1.0.0`.
 
@@ -46,7 +45,7 @@ The script is installed under the XDG data directory:
 ~/.local/share/antigravity-cache-cleaner/clear_cache_antigravity.sh
 ```
 
-If `XDG_DATA_HOME` is set, it is respected. No username such as `/home/lipe` is embedded in the project.
+If `XDG_DATA_HOME` is set, it is respected. No username such as `/home/user` is embedded in the project.
 
 ### Requirements
 
@@ -90,9 +89,9 @@ sudo apt install python3 python3-tk
 
 ---
 
-# Antigravity Cache Cleaner & Launcher — By Fronsanper
+# Antigravity Cache Cleaner & Launcher — Feito por Fronsanper
 
-> Linux-only utility that installs a graphical setup wizard, creates an Antigravity desktop shortcut, backs up the original shortcut, and provides restore/uninstall actions.
+> Utilitário exclusivo para Linux que instala um assistente de configuração gráfico, cria um atalho do Antigravity na área de trabalho, faz backup do atalho original e oferece opções de restauração e desinstalação.
 
 ## Português (Brasil)
 
@@ -109,7 +108,6 @@ Este projeto transforma o script de limpeza do Antigravity em uma instalação d
 - criação/substituição do atalho `/usr/share/applications/antigravity.desktop` quando disponível;
 - área para restaurar o atalho original pelo backup;
 - área para desinstalar, restaurando primeiro o original;
-- links clicáveis do Fronsanper;
 - mensagens do script de limpeza em PT-BR ou EN-US;
 - versão `1.0.0`.
 
@@ -138,7 +136,7 @@ O script é armazenado usando o diretório de dados XDG do usuário:
 ~/.local/share/antigravity-cache-cleaner/clear_cache_antigravity.sh
 ```
 
-Se `XDG_DATA_HOME` estiver definido, o projeto respeita essa variável. Assim, não existe caminho hard-coded para `/home/lipe` ou para qualquer nome de usuário específico.
+Se `XDG_DATA_HOME` estiver definido, o projeto respeita essa variável. Assim, não existe caminho hard-coded para `/home/user` ou para qualquer nome de usuário específico.
 
 ### Requisitos
 
@@ -205,61 +203,6 @@ O instalador não possui coleta de telemetria, não envia dados para servidores 
 - Discord: [NivalityOfficial](https://discord.com/invite/z5gb4zvWsY)
 - Telegram: [NivalityOfficial](https://t.me/+Ygtl-pe64d5jN2Nh)
 - YouTube: [FronsanperDev](https://www.youtube.com/@FronsanperOfficial)
-
----
-
-## 🇺🇸 English (US)
-
-### What this project does
-
-This project turns the supplied Antigravity cleanup script into a distributable Linux installer. It includes a Python/Tkinter Setup Wizard with:
-
-- PT-BR or EN-US language selection;
-- terms/privacy screen;
-- detailed explanation of how the cleaner works;
-- pre-install confirmation;
-- backup of the original `antigravity.desktop` before replacement;
-- user-data installation path instead of `/home/<name>` hard-coding;
-- creation/replacement of `/usr/share/applications/antigravity.desktop` when available;
-- restore-original action;
-- uninstall action that restores first;
-- clickable Fronsanper links;
-- localized cleaner output;
-- version `1.0.0`.
-
-### Important cleanup note
-
-The supplied cleaner works only on the Antigravity local-storage directories listed above. It does **not** delete personal files or project files outside those Antigravity locations.
-
-However, those locations are application-managed storage and may contain cache, extension state, workspace metadata, session information, or other local application data. The cleaner empties those storage directories as part of its cleanup process.
-
-**The installation backup is a backup of the desktop shortcut, not a backup of the Antigravity storage directories.**
-
-### Linux only
-
-This project was developed and tested for Linux. Windows is not supported or tested because the paths, permissions, desktop-entry mechanism and Unix utilities are different.
-
-### Install
-
-```bash
-git clone https://github.com/Fronsanper/antigravity-cache-cleaner-linux.git
-cd antigravity-cache-cleaner-linux
-chmod +x install.sh
-./install.sh
-```
-
-Requirements: Linux, Python 3, `python3-tk`, a graphical session, and preferably `pkexec` (or `sudo`). Antigravity should be installed at `/usr/share/antigravity/antigravity-ide` for the launcher portion.
-
-### Restore / uninstall
-
-Run `./install.sh` again to open the manager on an installed system, or use `./uninstall.sh` to start the uninstall flow. The uninstall restores the original desktop shortcut before deleting the installed files.
-
-### Links
-
-- Discord — [NivalityOfficial](https://discord.com/invite/z5gb4zvWsY)
-- Telegram — [NivalityOfficial](https://t.me/+Ygtl-pe64d5jN2Nh)
-- YouTube — [FronsanperDev](https://www.youtube.com/@FronsanperOfficial)
-- GitHub — [Fronsanper](https://github.com/Fronsanper)
 
 ## Project layout
 
