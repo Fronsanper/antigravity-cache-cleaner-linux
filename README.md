@@ -89,7 +89,7 @@ sudo apt install python3 python3-tk
 
 ---
 
-# Antigravity Cache Cleaner & Launcher — Feito por Fronsanper
+# Limpador de Cache e Lançador Antigravidade — Feito por Fronsanper
 
 > Utilitário exclusivo para Linux que instala um assistente de configuração gráfico, cria um atalho do Antigravity na área de trabalho, faz backup do atalho original e oferece opções de restauração e desinstalação.
 
@@ -203,6 +203,8 @@ O instalador não possui coleta de telemetria, não envia dados para servidores 
 - Discord: [NivalityOfficial](https://discord.com/invite/z5gb4zvWsY)
 - Telegram: [NivalityOfficial](https://t.me/+Ygtl-pe64d5jN2Nh)
 - YouTube: [FronsanperDev](https://www.youtube.com/@FronsanperOfficial)
+
+**Feito por Fronsanper**
 
 ## Project layout
 
