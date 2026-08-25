@@ -1,63 +1,64 @@
-# Antigravity SDE Manager without AES — By Fronsanper
+# Antigravity Cache Cleaner for Linux — By Fronsanper
 
-**Version 1.0.0**
-
-> A Linux utility that helps update or reinstall Antigravity on computers without AES support by using Intel SDE, while preserving the existing Antigravity configuration and Intel SDE installation.
+> A Linux-only utility that installs a graphical setup wizard, creates an Antigravity desktop shortcut, backs up the original shortcut, restores it when requested, and provides a clean uninstall path.
 
 ## English (US)
 
 ### What this project does
 
-This project provides a graphical manager for updating or reinstalling Antigravity on Linux systems whose processors do not provide AES instructions. It uses Intel SDE as a compatibility layer for the Antigravity language server and is designed to preserve important local configuration while the Antigravity installation is replaced.
+This project turns the Antigravity cache-clearing script into a distributable Linux utility for other users. It includes a graphical Setup Wizard with:
 
-The manager includes:
-
-- installation diagnostics;
-- backup before replacing the Antigravity installation;
-- installation/update from an official `.tar.gz` package;
-- automatic detection of the Antigravity `language_server`;
-- Intel SDE wrapper configuration;
-- log viewing;
-- backup restoration;
-- a graphical Linux application launcher;
+- EN-US as the default interface language, with PT-BR also available;
+- a terms and privacy screen;
+- a plain-language explanation of what the tool does;
+- a confirmation screen before changes are applied;
+- a backup of the original `antigravity.desktop` before replacement;
+- installation under the user's XDG data directory instead of a hard-coded `/home/<name>` path;
+- creation/update of `/usr/share/applications/antigravity.desktop` when administrative access is available;
+- a restore action that puts the original desktop file back from the backup;
+- an uninstall flow that restores the original file before removing the project;
+- bilingual installer and cleaner messages;
 - version `1.0.0`.
 
-### Important: what the manager preserves
+### Important: what the cleaner removes
 
-The manager is designed to preserve the existing Antigravity configuration directory, when detected:
-
-```text
-~/.config/Antigravity IDE
-```
-
-It also preserves the Intel SDE installation:
+The cleaner is based on the original script supplied for this project. It only works with Antigravity's own local configuration/storage paths listed below:
 
 ```text
-~/intel-sde
+~/.config/Antigravity/User/globalStorage
+~/.config/Antigravity/User/workspaceStorage
+~/.config/Antigravity/Local Storage
+~/.config/Antigravity/IndexedDB
 ```
 
-The Antigravity installation itself is updated or replaced under:
+It does **not** delete the user's personal files, home-directory files, source-code projects, or files outside the Antigravity locations listed above. The cleaner also terminates `antigravity-ide` and `sde64`, removes `Singleton*` and `code.lock`, and then attempts to launch `/usr/share/antigravity/antigravity-ide` with `--max-old-space-size=8192`.
+
+The directories above are Antigravity-managed local storage. Depending on the Antigravity version and installed extensions, they may contain local cache, extension state, workspace metadata, session information, or similar application data. The cleaner empties those storage directories; it does **not** remove the actual project files stored elsewhere on your system.
+
+**Important:** the installer backup protects the original `.desktop` launcher. It does **not** back up the Antigravity storage directories listed above. Review the terms screen before using the cleaner.
+
+### Installation location
+
+The script is installed under the XDG data directory:
 
 ```text
-/usr/share/antigravity
+~/.local/share/antigravity-cache-cleaner/clear_cache_antigravity.sh
 ```
 
-Before changing the installation, the manager creates a backup so that the existing installation can be restored when needed.
-
-The manager does **not** intentionally delete the Antigravity configuration directory or the Intel SDE directory during the update/reinstallation process.
+If `XDG_DATA_HOME` is set, it is respected. No username such as `/home/user` is embedded in the project.
 
 ### Requirements
 
 - Linux.
 - Python 3.
 - Tkinter (`python3-tk` on Debian/Ubuntu-based systems).
-- Intel SDE installed at `~/intel-sde/sde64`.
-- The official Antigravity `.tar.gz` package.
-- A graphical Linux session for the manager.
+- A graphical Linux session for the wizard.
+- `pkexec` is recommended for graphical administrative authentication; `sudo` may be used as a fallback.
+- Antigravity installed at `/usr/share/antigravity/antigravity-ide` for the post-clean launch step.
 
 ### Windows
 
-**Windows is not supported.** This project is specifically designed for Linux and uses Linux filesystem paths, permissions, application launchers, and Intel SDE Linux binaries.
+**Windows is not supported.** This project uses Linux paths, Unix permissions, `.desktop` files, `pkill`, `setsid`, `pkexec`/`sudo`, and the Linux Antigravity configuration layout. Windows compatibility has not been tested.
 
 ### Quick start
 
@@ -70,23 +71,13 @@ chmod +x install.sh
 ./install.sh
 ```
 
-After installation, open **Antigravity SDE Manager without AES — By Fronsanper** from the Linux application menu. You can also run:
+The wizard guides you through language selection, terms, explanation, backup, installation, restore, and uninstall.
+
+If Tkinter is missing on Debian/Ubuntu-based systems:
 
 ```bash
-./run.sh
+sudo apt install python3 python3-tk
 ```
-
-### Recommended workflow
-
-1. Run the installation diagnostics.
-2. Create a backup.
-3. Choose **Install/Update** and select the official Antigravity `.tar.gz` package.
-4. Configure the Intel SDE wrapper.
-5. Launch Antigravity.
-
-### Chats and configuration
-
-The project does not intentionally remove `~/.config/Antigravity IDE` (or another detected configuration directory) or `~/intel-sde`. Synchronized chats should reappear after signing in with the same account, but synchronization itself is handled by Antigravity.
 
 ### Community
 
@@ -98,70 +89,71 @@ The project does not intentionally remove `~/.config/Antigravity IDE` (or anothe
 
 ---
 
-# Gerenciador SDE do Antigravity sem AES — Feito por Fronsanper
+# Limpador de Cache e Lançador Antigravidade — Feito por Fronsanper
 
-**Versão 1.0.0**
-
-> Utilitário para Linux que ajuda a atualizar ou reinstalar o Antigravity em computadores sem suporte a AES usando Intel SDE, preservando a configuração existente do Antigravity e a instalação do Intel SDE.
+> Utilitário exclusivo para Linux que instala um assistente de configuração gráfico, cria um atalho do Antigravity na área de trabalho, faz backup do atalho original e oferece opções de restauração e desinstalação.
 
 ## Português (Brasil)
 
 ### O que este projeto faz
 
-Este projeto fornece um gerenciador gráfico para atualizar ou reinstalar o Antigravity em sistemas Linux cujos processadores não possuem instruções AES. Ele utiliza o Intel SDE como camada de compatibilidade para o `language_server` do Antigravity e foi desenvolvido para preservar configurações locais importantes enquanto a instalação do Antigravity é substituída.
+Este projeto transforma o script de limpeza do Antigravity em uma instalação distribuível para outras pessoas. O projeto inclui um Setup Wizard em Python/Tkinter com:
 
-O gerenciador inclui:
-
-- diagnóstico da instalação;
-- backup antes de substituir a instalação do Antigravity;
-- instalação/atualização a partir de um pacote `.tar.gz` oficial;
-- detecção automática do `language_server` do Antigravity;
-- configuração do wrapper Intel SDE;
-- visualização de logs;
-- restauração do backup;
-- lançador gráfico no menu de aplicativos do Linux;
+- seleção de idioma PT-BR ou EN-US;
+- tela de termos e privacidade;
+- explicação detalhada do funcionamento;
+- confirmação e aviso antes da instalação;
+- backup do `antigravity.desktop` original antes da substituição;
+- instalação do script em uma pasta de dados do usuário, em vez de depender de `/home/<nome>`;
+- criação/substituição do atalho `/usr/share/applications/antigravity.desktop` quando disponível;
+- área para restaurar o atalho original pelo backup;
+- área para desinstalar, restaurando primeiro o original;
+- mensagens do script de limpeza em PT-BR ou EN-US;
 - versão `1.0.0`.
 
-### Importante: o que o gerenciador preserva
+### Aviso importante sobre a limpeza
 
-O gerenciador foi desenvolvido para preservar o diretório de configuração existente do Antigravity, quando detectado:
-
-```text
-~/.config/Antigravity IDE
-```
-
-Ele também preserva a instalação do Intel SDE:
+O script original fornecido para este projeto atua somente nas áreas de armazenamento local do próprio Antigravity:
 
 ```text
-~/intel-sde
+~/.config/Antigravity/User/globalStorage
+~/.config/Antigravity/User/workspaceStorage
+~/.config/Antigravity/Local Storage
+~/.config/Antigravity/IndexedDB
 ```
 
-A instalação do Antigravity é atualizada ou substituída em:
+Ele **não apaga arquivos pessoais, projetos, códigos-fonte ou outros arquivos do usuário que estejam fora dessas áreas do Antigravity**. Também encerra os processos `antigravity-ide` e `sde64`, remove arquivos `Singleton*` e `code.lock`, e tenta iniciar `/usr/share/antigravity/antigravity-ide` com `--max-old-space-size=8192`.
+
+Essas pastas são armazenamento local do Antigravity e podem conter cache, dados locais de extensões, metadados de workspace, informações de sessão e outros dados de funcionamento do aplicativo. A limpeza esvazia esse armazenamento local, mas não remove os arquivos reais dos seus projetos que ficam em outras pastas do computador.
+
+**Importante:** o backup criado pelo instalador é do atalho `.desktop`, não dessas pastas de armazenamento do Antigravity. Leia e entenda essa parte antes de executar a limpeza.
+
+### Onde o script fica instalado
+
+O script é armazenado usando o diretório de dados XDG do usuário:
 
 ```text
-/usr/share/antigravity
+~/.local/share/antigravity-cache-cleaner/clear_cache_antigravity.sh
 ```
 
-Antes de alterar a instalação, o gerenciador cria um backup para que a instalação existente possa ser restaurada quando necessário.
-
-O gerenciador **não apaga deliberadamente** o diretório de configuração do Antigravity nem o diretório do Intel SDE durante o processo de atualização/reinstalação.
+Se `XDG_DATA_HOME` estiver definido, o projeto respeita essa variável. Assim, não existe caminho hard-coded para `/home/user` ou para qualquer nome de usuário específico.
 
 ### Requisitos
 
-- Linux.
+- Linux (desenvolvido e testado para Linux).
 - Python 3.
-- Tkinter (`python3-tk` em sistemas baseados em Debian/Ubuntu).
-- Intel SDE instalado em `~/intel-sde/sde64`.
-- O pacote `.tar.gz` oficial do Antigravity.
-- Uma sessão gráfica Linux para executar o gerenciador.
+- `python3-tk`/Tkinter para a interface gráfica.
+- Sessão gráfica Linux para abrir o wizard.
+- `pkexec` é recomendado para pedir autorização administrativa de forma gráfica; se não existir, o projeto pode usar `sudo`.
+- Antigravity instalado em `/usr/share/antigravity/antigravity-ide` para o launcher iniciar o aplicativo após a limpeza.
 
 ### Windows
 
-**Windows não é suportado.** Este projeto foi desenvolvido especificamente para Linux e utiliza caminhos de sistema Linux, permissões, lançadores de aplicativos e binários Linux do Intel SDE.
+**Windows não é suportado.** O projeto usa caminhos Linux, permissões Unix, arquivos `.desktop`, `pkexec`/`sudo`, `pkill`, `setsid` e a estrutura de configuração Linux do Antigravity. O comportamento no Windows não foi testado.
 
-### Instalação rápida
+### Instalação
 
-Depois de baixar ou clonar o repositório:
+Baixe/clon e o repositório:
 
 ```bash
 git clone https://github.com/Fronsanper/antigravity-cache-cleaner-linux.git
@@ -170,28 +162,64 @@ chmod +x install.sh
 ./install.sh
 ```
 
-Depois da instalação, abra **Antigravity SDE Manager without AES — By Fronsanper** pelo menu de aplicativos do Linux. Também é possível executar:
+O wizard guiará você pela seleção de idioma, termos, explicação, backup e instalação.
+
+Caso o sistema não tenha Tkinter:
 
 ```bash
-./run.sh
+sudo apt install python3 python3-tk
 ```
 
-### Fluxo recomendado
+Em outras distribuições, instale o pacote equivalente de Python 3 + Tkinter.
 
-1. Execute o diagnóstico da instalação.
-2. Crie um backup.
-3. Escolha **Instalar/Atualizar** e selecione o pacote `.tar.gz` oficial do Antigravity.
-4. Configure o wrapper Intel SDE.
-5. Abra o Antigravity.
+### O que o instalador altera
 
-### Chats e configurações
+1. Cria `~/.local/share/antigravity-cache-cleaner/`.
+2. Salva uma cópia do `antigravity.desktop` original em:
 
-O projeto não apaga deliberadamente `~/.config/Antigravity IDE` (ou outro diretório de configuração detectado) nem `~/intel-sde`. Os chats sincronizados devem reaparecer ao entrar com a mesma conta, mas a sincronização em si é responsabilidade do próprio Antigravity.
+```text
+~/.local/share/antigravity-cache-cleaner/backup/antigravity.desktop.original
+```
 
-### Comunidade
+3. Guarda metadados do backup.
+4. Instala o script executável nessa pasta de dados.
+5. Cria o novo `.desktop` apontando para o script via `$HOME`.
+6. Salva o idioma selecionado.
+
+### Reverter
+
+O assistente possui uma área de gerenciamento para **Restaurar original**. O processo usa o backup salvo antes da instalação. Se não existia um `antigravity.desktop` original, o projeto registra isso e remove o atalho criado ao restaurar/desinstalar.
+
+### Desinstalar
+
+A desinstalação restaura primeiro o `.desktop` original, quando houver backup, e depois remove os arquivos da instalação.
+
+### Privacidade
+
+O instalador não possui coleta de telemetria, não envia dados para servidores e não precisa de uma conta para funcionar. Os únicos endereços externos exibidos pelo wizard são os links sociais do próprio projeto fornecidos no README.
+
+### Créditos / Links
 
 - Discord: [NivalityOfficial](https://discord.com/invite/z5gb4zvWsY)
 - Telegram: [NivalityOfficial](https://t.me/+Ygtl-pe64d5jN2Nh)
 - YouTube: [FronsanperDev](https://www.youtube.com/@FronsanperOfficial)
 
 **Feito por Fronsanper**
+
+## Project layout
+
+```text
+antigravity-cache-cleaner-linux/
+├── assets/
+│   └── clear_cache_antigravity.original.sh
+├── clear_cache_antigravity.sh
+├── install.sh
+├── uninstall.sh
+├── wizard.py
+├── LICENSE.txt
+└── README.md
+```
+
+## License
+
+MIT. See `LICENSE.txt`.
