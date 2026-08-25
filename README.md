@@ -23,7 +23,7 @@ This project turns the Antigravity cache-clearing script into a distributable Li
 
 ### Important: what the cleaner removes
 
-The cleaner is based on the original script supplied for this project. It clears the contents of these Antigravity locations:
+The cleaner is based on the original script supplied for this project. It only works with Antigravity's own local configuration/storage paths listed below:
 
 ```text
 ~/.config/Antigravity/User/globalStorage
@@ -32,9 +32,11 @@ The cleaner is based on the original script supplied for this project. It clears
 ~/.config/Antigravity/IndexedDB
 ```
 
-It also terminates `antigravity-ide` and `sde64`, removes `Singleton*` and `code.lock`, and then attempts to launch `/usr/share/antigravity/antigravity-ide` with `--max-old-space-size=8192`.
+It does **not** delete the user's personal files, home-directory files, source-code projects, or files outside the Antigravity locations listed above. The cleaner also terminates `antigravity-ide` and `sde64`, removes `Singleton*` and `code.lock`, and then attempts to launch `/usr/share/antigravity/antigravity-ide` with `--max-old-space-size=8192`.
 
-**This can remove local extension, workspace, session, or other cached data.** The installer backup protects the original `.desktop` launcher; it does **not** back up the cache directories above. Review the terms screen before using the cleaner.
+The directories above are Antigravity-managed local storage. Depending on the Antigravity version and installed extensions, they may contain local cache, extension state, workspace metadata, session information, or similar application data. The cleaner empties those storage directories; it does **not** remove the actual project files stored elsewhere on your system.
+
+**Important:** the installer backup protects the original `.desktop` launcher. It does **not** back up the Antigravity storage directories listed above. Review the terms screen before using the cleaner.
 
 ### Installation location
 
@@ -113,7 +115,7 @@ Este projeto transforma o script de limpeza do Antigravity em uma instalação d
 
 ### Aviso importante sobre a limpeza
 
-O script original fornecido para este projeto limpa o conteúdo destas áreas do Antigravity:
+O script original fornecido para este projeto atua somente nas áreas de armazenamento local do próprio Antigravity:
 
 ```text
 ~/.config/Antigravity/User/globalStorage
@@ -122,9 +124,11 @@ O script original fornecido para este projeto limpa o conteúdo destas áreas do
 ~/.config/Antigravity/IndexedDB
 ```
 
-Ele também encerra processos `antigravity-ide` e `sde64`, remove arquivos `Singleton*` e `code.lock`, e tenta iniciar `/usr/share/antigravity/antigravity-ide` com `--max-old-space-size=8192`.
+Ele **não apaga arquivos pessoais, projetos, códigos-fonte ou outros arquivos do usuário que estejam fora dessas áreas do Antigravity**. Também encerra os processos `antigravity-ide` e `sde64`, remove arquivos `Singleton*` e `code.lock`, e tenta iniciar `/usr/share/antigravity/antigravity-ide` com `--max-old-space-size=8192`.
 
-**Isso pode remover dados locais de extensões, workspaces ou sessões do Antigravity.** O backup criado pelo instalador é do atalho `.desktop`, não é um backup dessas pastas de cache. Leia e entenda essa parte antes de executar a limpeza.
+Essas pastas são armazenamento local do Antigravity e podem conter cache, dados locais de extensões, metadados de workspace, informações de sessão e outros dados de funcionamento do aplicativo. A limpeza esvazia esse armazenamento local, mas não remove os arquivos reais dos seus projetos que ficam em outras pastas do computador.
+
+**Importante:** o backup criado pelo instalador é do atalho `.desktop`, não dessas pastas de armazenamento do Antigravity. Leia e entenda essa parte antes de executar a limpeza.
 
 ### Onde o script fica instalado
 
@@ -154,8 +158,8 @@ Se `XDG_DATA_HOME` estiver definido, o projeto respeita essa variável. Assim, n
 Baixe/clon e o repositório:
 
 ```bash
-git clone https://github.com/Fronsanper/antigravity-cache-cleaner.git
-cd antigravity-cache-cleaner
+git clone https://github.com/Fronsanper/antigravity-cache-cleaner-linux.git
+cd antigravity-cache-cleaner-linux
 chmod +x install.sh
 ./install.sh
 ```
@@ -223,11 +227,13 @@ This project turns the supplied Antigravity cleanup script into a distributable 
 - localized cleaner output;
 - version `1.0.0`.
 
-### Important cleanup warning
+### Important cleanup note
 
-The supplied script empties the Antigravity local storage directories listed above, terminates `antigravity-ide`/`sde64`, removes `Singleton*` and `code.lock`, and tries to start the Antigravity executable. This may remove local extension, workspace, or session data.
+The supplied cleaner works only on the Antigravity local-storage directories listed above. It does **not** delete personal files or project files outside those Antigravity locations.
 
-**The install backup is a backup of the desktop shortcut, not a backup of the cache directories.**
+However, those locations are application-managed storage and may contain cache, extension state, workspace metadata, session information, or other local application data. The cleaner empties those storage directories as part of its cleanup process.
+
+**The installation backup is a backup of the desktop shortcut, not a backup of the Antigravity storage directories.**
 
 ### Linux only
 
@@ -236,8 +242,8 @@ This project was developed and tested for Linux. Windows is not supported or tes
 ### Install
 
 ```bash
-git clone https://github.com/Fronsanper/antigravity-cache-cleaner.git
-cd antigravity-cache-cleaner
+git clone https://github.com/Fronsanper/antigravity-cache-cleaner-linux.git
+cd antigravity-cache-cleaner-linux
 chmod +x install.sh
 ./install.sh
 ```
@@ -250,15 +256,15 @@ Run `./install.sh` again to open the manager on an installed system, or use `./u
 
 ### Links
 
-- Discord — NivalityOfficial: https://discord.com/invite/z5gb4zvWsY
-- Telegram — NivalityOfficial: https://t.me/+Ygtl-pe64d5jN2Nh
-- YouTube — FronsanperDev: https://www.youtube.com/@FronsanperOfficial
-- GitHub — Fronsanper: https://github.com/Fronsanper
+- Discord — [NivalityOfficial](https://discord.com/invite/z5gb4zvWsY)
+- Telegram — [NivalityOfficial](https://t.me/+Ygtl-pe64d5jN2Nh)
+- YouTube — [FronsanperDev](https://www.youtube.com/@FronsanperOfficial)
+- GitHub — [Fronsanper](https://github.com/Fronsanper)
 
 ## Project layout
 
 ```text
-antigravity-cache-cleaner/
+antigravity-cache-cleaner-linux/
 ├── assets/
 │   └── clear_cache_antigravity.original.sh
 ├── clear_cache_antigravity.sh
